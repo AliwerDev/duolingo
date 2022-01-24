@@ -1,9 +1,9 @@
 const tests = [
 	{
 		type: "translate",
-		question: "Hello world",
-		answer: "Salom dunyo",
-		words: ["olam", "do'st"],
+		question: "Hello school",
+		answer: "Salom school",
+		words: ["olam", "do'st", "sinf"],
 	},
 	{
 		type: "translate",
@@ -29,13 +29,13 @@ const tests = [
 		answer: "Hello",
 	},
 	{
-		type: "imgTest",
+		type: "translate",
 		question: "I'm going to be a senior developer",
 		answer: "Men senior dasturchi bo'lmoqchiman",
 	},
 	{
 		type: "test",
-		question: "maktab",
+		question: "school",
 		words: ["Universitet", "School", "Garden", "Market"],
 		answer: "School",
 	},

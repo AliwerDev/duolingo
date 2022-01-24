@@ -39,14 +39,16 @@ const GameBoxWrapper = styled.div`
     width: 100%;
     border-top: 2px solid #E5E5E5;
     text-align: center;
+    justify-content: space-around;
     position: relative;
     z-index: 9999;
 
-    .submit {
+    button{
       width: 160px;
       height: 40px;
-      margin: 0 250px;
       border-radius: 18px;
+    }
+    .submit {
       background-color: #E5E5E5;
       color: #919191;
       box-shadow: 0 5px 10px 0 #919191;
@@ -56,10 +58,6 @@ const GameBoxWrapper = styled.div`
     }
 
     .next {
-      width: 160px;
-      height: 45px;
-      margin: 0 250px;
-      border-radius: 18px;
       border: 1px solid #919191;
       background-color: #fff;
       color: #919191;

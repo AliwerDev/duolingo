@@ -62,29 +62,31 @@ const TranslateGame = ({test, setSubmitFunction}) => {
 	}, [answers])
 
 	return (
-		<TranslateGameWrapper>
-			<div className="translate-header">
-				<h2>Berilgan gapni tarjima qiling!</h2>
-			</div>
-			<div className="translate-body">
-				<div className="translate-question-box d-flex align-items-center">
-					<img src="https://d2pur3iezf4d1j.cloudfront.net/images/50af330449fbbaf257fc9868c4321586" alt=""/>
-					<div className="d-flex align-items-center">
-						<Button variant={"text"} onClick={() => {
-							speak(question)
-						}}>
-							<VolumeUpIcon/>
-						</Button>
-						<Typography variant={"h5"} className={"m-0 ms-2"}>
-							{question}
-						</Typography>
+		<TranslateGameWrapper className={"row w-100 justify-content-center"}>
+			<div className="col-md-10 col-lg-8 col-xxl-6">
+				<div className="translate-header">
+					<h2>Berilgan gapni tarjima qiling!</h2>
+				</div>
+				<div className="translate-body">
+					<div className="translate-question-box d-flex align-items-center">
+						<img src="https://d2pur3iezf4d1j.cloudfront.net/images/50af330449fbbaf257fc9868c4321586" alt=""/>
+						<div className="d-flex align-items-center">
+							<Button variant={"text"} onClick={() => {
+								speak(question)
+							}}>
+								<VolumeUpIcon/>
+							</Button>
+							<Typography variant={"h5"} className={"m-0 ms-2"}>
+								{question}
+							</Typography>
+						</div>
 					</div>
-				</div>
-				<div className="result-words py-4">
-					<GenerateButtons arr={answers} click={deleteAnswer}/>
-				</div>
-				<div className="variant-words">
-					<GenerateButtons arr={variants} click={addAnswer}/>
+					<div className="result-words">
+						<GenerateButtons arr={answers} click={deleteAnswer}/>
+					</div>
+					<div className="variant-words">
+						<GenerateButtons arr={variants} click={addAnswer}/>
+					</div>
 				</div>
 			</div>
 		</TranslateGameWrapper>

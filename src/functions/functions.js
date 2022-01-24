@@ -10,9 +10,9 @@ const slowSpeak = (text) => {
 	let synth = window.speechSynthesis;
 	let voices = synth.getVoices();
 	let utterance1 = new SpeechSynthesisUtterance(text);
-	utterance1.voice = voices[1];
+	utterance1.voice = voices[5];
 	utterance1.pitch = 1;
-	utterance1.rate = 0.1;
+	utterance1.rate = 0.2;
 	synth.speak(utterance1);
 };
 
@@ -30,4 +30,8 @@ const shuffle = (array) => {
 	return array;
 };
 
-export { speak, shuffle, slowSpeak };
+const pushLevelData = (data) => {
+	localStorage.setItem("levelData", JSON.stringify(data))
+}
+
+export { speak, shuffle, slowSpeak, pushLevelData };

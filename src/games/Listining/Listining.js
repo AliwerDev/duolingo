@@ -61,57 +61,59 @@ const ListeningGame = ({ test, setSubmit }) => {
     }, [answers])
 
   return (
-    <ListeningGameWrapper>
-      <div className="translate-header">
-        <h2 className="text-center">Berilgan gapni tarjima qiling!</h2>
-      </div>
-      <div className="translate-body">
-        <div className="translate-question-box d-flex align-items-center justify-content-center">
-          <div className="d-flex align-items-end gap-5">
-            <Button
-              variant={"text"}
-              onClick={() => {
-                speak(question);
-              }}
-              className="d-flex align-items-center justify-content-center"
-            >
-              <VolumeUpIcon
-                style={{
-                  fontSize: "100px",
-                  color: "white",
-                  backgroundColor: "#1cb0f6",
-                  borderRadius: "20px",
-                  padding: "5px",
-                  margin: "0px",
-                }}
-              />
-            </Button>
-            <Button
-              variant={"text"}
-              onClick={() => {
-                slowSpeak(question);
-              }}
-            >
-              <SlowMotionVideoIcon
-                style={{
-                  fontSize: "65px",
-                  color: "white",
-                  backgroundColor: "#1cb0f6",
-                  borderRadius: "20px",
-                  padding: "5px",
-                  margin: "0px",
-                }}
-              />
-            </Button>
-          </div>
+    <ListeningGameWrapper className={"d-flex justify-content-center w-100"}>
+        <div className="col-md-10 col-lg-8 col-xxl-6">
+            <div className="translate-header">
+                <h2 className="text-center">Berilgan gapni tarjima qiling!</h2>
+            </div>
+            <div className="translate-body">
+                <div className="translate-question-box d-flex align-items-center justify-content-center">
+                    <div className="d-flex align-items-end gap-5">
+                        <Button
+                            variant={"text"}
+                            onClick={() => {
+                                speak(question);
+                            }}
+                            className="d-flex align-items-center justify-content-center"
+                        >
+                            <VolumeUpIcon
+                                style={{
+                                    fontSize: "100px",
+                                    color: "white",
+                                    backgroundColor: "#1cb0f6",
+                                    borderRadius: "20px",
+                                    padding: "5px",
+                                    margin: "0px",
+                                }}
+                            />
+                        </Button>
+                        <Button
+                            variant={"text"}
+                            onClick={() => {
+                                slowSpeak(question);
+                            }}
+                        >
+                            <SlowMotionVideoIcon
+                                style={{
+                                    fontSize: "65px",
+                                    color: "white",
+                                    backgroundColor: "#1cb0f6",
+                                    borderRadius: "20px",
+                                    padding: "5px",
+                                    margin: "0px",
+                                }}
+                            />
+                        </Button>
+                    </div>
+                </div>
+                <div className="result-words">
+                    <GenerateButtons arr={answers} click={deleteAnswer} />
+                </div>
+                <div className="variant-words">
+                    <GenerateButtons arr={variants} click={addAnswer} />
+                </div>
+            </div>
         </div>
-        <div className="result-words py-4">
-          <GenerateButtons arr={answers} click={deleteAnswer} />
-        </div>
-        <div className="variant-words">
-          <GenerateButtons arr={variants} click={addAnswer} />
-        </div>
-      </div>
     </ListeningGameWrapper>
   );
 };

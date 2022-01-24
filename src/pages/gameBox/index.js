@@ -1,12 +1,14 @@
 import GameBoxWrapper from "./GameBoxWrapper";
 import TranslateGame from "../../games/Translate/Translate";
-import tests from "../../data/Levels/Level1/tests";
 import {useState} from "react";
 import {Button} from "@mui/material";
 import TypeTest from "../../games/Test";
 import ClearIcon from '@mui/icons-material/Clear';
 import ListeningGame from "../../games/Listining/Listining";
 import {Link} from "react-router-dom";
+import FinishBox from "../FinishBox";
+
+const tests = JSON.parse(localStorage.getItem("levelData") || "[]");
 
 const Finished = (props) => {
 	return (
@@ -66,29 +68,31 @@ const GameBox = () => {
 	}
 
 	return (
-		<GameBoxWrapper>
-			{
-				// isGameLevelFinish &&
-
-			}
-			<div className={"game-header"}>
+		<>{
+			isGameLevelFinish ? <FinishBox data={{score: progressWidth, }}/> :
+			<GameBoxWrapper>
+				<div className={"game-header"}>
 				<Link to={"/"}><ClearIcon/></Link>
 				<div className="progress">
-					<div className="progress-bar" style={{width: `${(progressWidth >= 0) ? progressWidth : 0}%`}}/>
+				<div className="progress-bar" style={{width: `${(progressWidth >= 0) ? progressWidth : 0}%`}}/>
 				</div>
-			</div>
-			{
-				isFinished && <div className="modalFinish" />}
-			{
-				chooseType(test.type, test)
-			}
-			<div className="game-footer py-5 px-5 d-flex justify-content-between align-items-center">
+				</div>
+				{
+					chooseType(test.type, test)
+				}
+				{
+					isFinished && <div className="modalFinish" />}
+				{
+
+				}
+					<div className="game-footer py-5 px-5 d-flex align-items-center">
 				{
 					isFinished ? <Finished nextLevel={nextLevel} submitRes={submitRes}/>:
 					<NoFinished nextLevel={nextLevel} submitRes={submitRes}/>
 				}
-			</div>
-		</GameBoxWrapper>
+				</div>
+			</GameBoxWrapper>
+		}</>
 	)
 }
 
