@@ -4,7 +4,7 @@ import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import {shuffle, speak} from "../../functions/functions";
 import {useEffect, useState} from "react";
 
-const GenerateButtons = ({ arr, click }) => {
+const GenerateButtons = ({arr, click}) => {
 	return (
 		<>
 			{arr.map((text) => (
@@ -21,13 +21,14 @@ const GenerateButtons = ({ arr, click }) => {
 	);
 };
 
-const TranslateGame = ({test}) => {
+const TranslateGame = ({test, setSubmitFunction}) => {
 	const [answers, setAnswers] = useState([]);
 	const [variants, setVariants] = useState([]);
 	const [question, setQuestion] = useState("");
 
+
 	useEffect(() => {
-		const { question, answer, words } = test;
+		const {question, answer, words} = test;
 		const variants = [...answer.split(" "), ...(words || [])];
 
 		shuffle(variants);
@@ -52,7 +53,21 @@ const TranslateGame = ({test}) => {
 		setVariants(arr);
 
 		setAnswers([...answers, word]);
+		console.log(answers)
 	}
+
+	useEffect(() => {
+		setSubmitFunction({
+			submit: () => {
+				const ans = answers.join(" ");
+				console.log(ans);
+				console.log(test.answer);
+				if(ans === test.answer){
+					alert("Javob to'g'ri");
+				}else alert("Javob Xato")
+			}
+		})
+	}, [answers])
 
 	return (
 		<TranslateGameWrapper>
@@ -63,8 +78,10 @@ const TranslateGame = ({test}) => {
 				<div className="translate-question-box d-flex align-items-center">
 					<img src="https://d2pur3iezf4d1j.cloudfront.net/images/50af330449fbbaf257fc9868c4321586" alt=""/>
 					<div className="d-flex align-items-center">
-						<Button variant={"text"} onClick={() => {speak(question)}}>
-							<VolumeUpIcon />
+						<Button variant={"text"} onClick={() => {
+							speak(question)
+						}}>
+							<VolumeUpIcon/>
 						</Button>
 						<Typography variant={"h5"} className={"m-0 ms-2"}>
 							{question}
@@ -72,10 +89,10 @@ const TranslateGame = ({test}) => {
 					</div>
 				</div>
 				<div className="result-words py-4">
-					<GenerateButtons arr={answers} click={deleteAnswer} />
+					<GenerateButtons arr={answers} click={deleteAnswer}/>
 				</div>
 				<div className="variant-words">
-					<GenerateButtons arr={variants} click={addAnswer} />
+					<GenerateButtons arr={variants} click={addAnswer}/>
 				</div>
 			</div>
 		</TranslateGameWrapper>

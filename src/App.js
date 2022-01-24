@@ -1,4 +1,4 @@
-import GameBox from "./components/gameBox";
+import GameBox from "./gameBox";
 
 function App() {
   return (
