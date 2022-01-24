@@ -18,7 +18,7 @@ const TypeTestWrapper = styled.section`
       h2 {
         .word {
           color: red;
-          font-size: "18px";
+          font-size: 50px;
         }
       }
     }

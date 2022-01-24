@@ -6,6 +6,16 @@ const speak = (text) => {
 	synth.speak(utterance1);
 }
 
+const slowSpeak = (text) => {
+	let synth = window.speechSynthesis;
+	let voices = synth.getVoices();
+	let utterance1 = new SpeechSynthesisUtterance(text);
+	utterance1.voice = voices[1];
+	utterance1.pitch = 1;
+	utterance1.rate = 0.1;
+	synth.speak(utterance1);
+};
+
 const shuffle = (array) => {
 	let currentIndex = array.length,
 		randomIndex;
@@ -20,4 +30,4 @@ const shuffle = (array) => {
 	return array;
 };
 
-export { speak, shuffle };
+export { speak, shuffle, slowSpeak };

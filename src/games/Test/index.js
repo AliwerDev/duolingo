@@ -1,29 +1,41 @@
 import TypeTestWrapper from "./TypeTestWrapper";
-import {speak} from "../../functions/functions";
-import {useState} from "react";
+import {shuffle, speak} from "../../functions/functions";
+import {useEffect, useState} from "react";
 
-const TypeTest = ({ test }) => {
-  let { question, answer, words } = test;
+const TypeTest = ({ test, setSubmit }) => {
 
   const [active, setActive] = useState(null)
+  const [myAnswer, setMyAnswer] = useState("");
+
+  useEffect(() => {
+    let { words } = test;
+    setActive(null);
+
+    shuffle(words);
+  }, [test])
+
+  useEffect(() => {
+    setSubmit(myAnswer === test.answer)
+  }, [myAnswer])
 
   return (
     <TypeTestWrapper>
       <div className="container">
-        <div className="question-block py-5">
+        <div className="question-block">
           <div className="question my-5">
-            <h2><span className="word">"{question}"</span> soz qanday tarjima qilinadi ?</h2>
+            <h2><span className="word">"{test.question}"</span> soz qanday tarjima qilinadi ?</h2>
           </div>
 
           <div className="variants">
             <ul>
-              {words.map((word, item) => (
+              {test.words.map((word, item) => (
                 <li
                   key={word}
                   className={item === active ? "active" : ""}
                   onClick={() => {
                     speak(word);
-                    setActive(item)
+                    setActive(item);
+                    setMyAnswer(word);
                   }}
                 >
                   {word}

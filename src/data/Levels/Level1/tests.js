@@ -47,12 +47,6 @@ const tests = [
 	},
 	{
 		type: "test",
-		question: "Sen",
-		words: ["I", "He", "She", "You"],
-		answer: "You",
-	},
-	{
-		type: "test",
 		question: "Chiroyli",
 		words: ["Hello", "Bye", "Good", "Nice"],
 		answer: "Hello",
@@ -62,8 +56,6 @@ const tests = [
 		question: "I'm going to be a senior developer",
 		answer: "Men senior dasturchi bo'lmoqchiman",
 	},
-
-
 ];
 
 export default tests;

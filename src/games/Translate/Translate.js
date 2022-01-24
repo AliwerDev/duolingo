@@ -57,16 +57,8 @@ const TranslateGame = ({test, setSubmitFunction}) => {
 	}
 
 	useEffect(() => {
-		setSubmitFunction({
-			submit: () => {
-				const ans = answers.join(" ");
-				console.log(ans);
-				console.log(test.answer);
-				if(ans === test.answer){
-					alert("Javob to'g'ri");
-				}else alert("Javob Xato")
-			}
-		})
+		const ans = answers.join(" ");
+		setSubmitFunction(ans === test.answer)
 	}, [answers])
 
 	return (
